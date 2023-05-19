@@ -1,0 +1,46 @@
+import time
+
+# Function to send emergency alert messages
+def send_emergency_alert():
+    # Simulating sending messages to family, police, and ambulance
+    print("Sending emergency alert to family members...")
+    print("Sending emergency alert to local police station...")
+    print("Sending emergency alert to ambulance services...")
+    print("Emergency alert messages sent!")
+
+# Function to detect triple power button press
+def detect_triple_press():
+    # Simulating power button press detection
+    print("Triple power button press detected!")
+    send_emergency_alert()
+
+# Main program loop
+def main():
+    # Simulating user input
+    while True:
+        user_input = input("Enter a number or press the power button: ")
+        
+        # Check for emergency code "111"
+        if user_input == "111":
+            send_emergency_alert()
+            break
+        
+        # Check for triple power button press
+        if user_input == "power_button":
+            start_time = time.time()
+            press_count = 1
+
+            # Wait for subsequent power button presses within 2 seconds
+            while press_count < 3:
+                user_input = input("Press the power button again: ")
+                 if user_input == "power_button" and (time.time() - start_time) <= 2:
+                    press_count += 1
+                else:
+                    break
+
+            if press_count == 3:
+                detect_triple_press()
+                break
+
+# Start the program
+main()
